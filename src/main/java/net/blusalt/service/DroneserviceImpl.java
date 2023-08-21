@@ -2,6 +2,8 @@ package net.blusalt.service;
 
 
 
+import java.util.Optional;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +13,7 @@ import net.blusalt.entity.DroneRequest;
 import net.blusalt.entity.DroneResponse;
 import net.blusalt.exception.DroneServiceCustomException;
 import net.blusalt.model.DroneFleet;
+import net.blusalt.model.Medication;
 import net.blusalt.repository.DroneRepository;
 
 @Service
@@ -19,6 +22,12 @@ public class DroneserviceImpl implements DroneFleetService {
 	
 	@Autowired
 	DroneRepository droneRepository;
+	
+	public DroneserviceImpl(DroneRepository droneRepository) {
+		
+		this.droneRepository = droneRepository;
+	}
+
 	@Override
 	public long addFleet(DroneRequest droneRequest) {
 		// TODO Auto-generated method stub
@@ -47,5 +56,6 @@ public class DroneserviceImpl implements DroneFleetService {
 			
 		return droneResponse ;
 	}
+
 
 }
