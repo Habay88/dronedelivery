@@ -15,14 +15,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
+@Data
 @Builder
 @Entity
 public class DroneFleet {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long droneId;
 	
 	@Size(max=100)
 	private UUID serialNumber;
