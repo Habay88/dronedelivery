@@ -116,6 +116,18 @@ public class DroneFleetController {
 		  double batteryLevel = dronefleet.getBatteryCapacityPercentage();
 		  return ResponseEntity.ok(batteryLevel);
 		  }
+	  
+	  @PostMapping("/{droneId}/set-loading")
+	  public ResponseEntity<String> checkDroneState(@PathVariable Long droneId){
+		  DroneFleet droneFleet = droneRepository.findById(droneId).orElseThrow(
+					()-> new DroneServiceCustomException("Drone with given id not found","Drone Not Found"));
+		if(!droneFleet.canBeLoaded()) {
+			return ResponseEntity.badRequest().body("Drone cannot be on LOADING state due to low battery.Adviced to charge");
+		}
+		droneFleet.setDroneState(DroneState.LOADING);
+		droneRepository.save(droneFleet);
+		  return ResponseEntity.ok("Drone set to LOADING state");
+	  }
 }
 
 	  

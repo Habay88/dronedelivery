@@ -55,4 +55,7 @@ public class DroneFleet {
 				.sum();
 		return (currentWeight + extraWeight) <= weightLimit;
 	}
+	public boolean canBeLoaded() {
+		return droneState != DroneState.LOADING || batteryCapacityPercentage >= 25;
+	}
 }
