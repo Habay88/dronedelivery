@@ -36,7 +36,7 @@ public class DroneFleet {
 	
 	private DroneModel model;
 	@Max(500)
-	private int weightLimit;
+	private double weightLimit;
 	@Min(0)
 	@Max(100)
 	private int batteryCapacityPercentage;
@@ -48,4 +48,11 @@ public class DroneFleet {
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Medication> loadedMedications = new ArrayList<>();
 	
+	// to check for excess weight
+	public boolean canCarryExcessWeight(double extraWeight) {
+		double currentWeight = loadedMedications.stream()
+				.mapToDouble(Medication::getWeight)
+				.sum();
+		return (currentWeight + extraWeight) <= weightLimit;
+	}
 }

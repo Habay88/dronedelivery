@@ -51,13 +51,29 @@ public class DroneFleetController {
 		return new ResponseEntity<>(droneId, HttpStatus.CREATED);
 	}
 	//loading a drone with medication items
+//	 @PostMapping("/{droneId}/load-medication/{medicationId}")
+//	    public ResponseEntity<String> loadMedication(@PathVariable Long droneId, @PathVariable Long medicationId) {
+//	        DroneFleet droneRequest = droneRepository.findById(droneId).orElseThrow(
+//					()-> new DroneServiceCustomException("drone with given id not found","Drone Not Found"));
+//	        Medication medication = medicationRepository.findById(medicationId).orElseThrow(
+//					()-> new MedicationCustomException("medication with given id not found","Medication Not Found"));
+//
+//
+//	        droneRequest.getLoadedMedications().add(medication);
+//	        droneRepository.save(droneRequest);
+//
+//	        return ResponseEntity.ok("Medication loaded to the drone was successful.");
+//	    }
+	 // prevent drone from being loaded with more weight it can carry
 	 @PostMapping("/{droneId}/load-medication/{medicationId}")
-	    public ResponseEntity<String> loadMedication(@PathVariable Long droneId, @PathVariable Long medicationId) {
+	    public ResponseEntity<String> loadMedicationwithActualweight(@PathVariable Long droneId, @PathVariable Long medicationId) {
 	        DroneFleet droneRequest = droneRepository.findById(droneId).orElseThrow(
-					()-> new DroneServiceCustomException("drone with given id not found","Drone Not Found"));
+					()-> new DroneServiceCustomException("Drone with given id not found","Drone Not Found"));
 	        Medication medication = medicationRepository.findById(medicationId).orElseThrow(
-					()-> new MedicationCustomException("medication with given id not found","Medication Not Found"));
-
+					()-> new MedicationCustomException("Medication with given id not found","Medication Not Found"));
+           if(!droneRequest.canCarryExcessWeight((medication.getWeight(){
+        	   return ResponseEntity.badRequest().body("Drone weight limit  exceeded, please adjust accordingly.");
+           }
 
 	        droneRequest.getLoadedMedications().add(medication);
 	        droneRepository.save(droneRequest);
