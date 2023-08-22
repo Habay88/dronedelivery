@@ -1,4 +1,6 @@
-package net.blusalt.model;
+package net.blusalt.entity;
+
+import java.util.UUID;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,12 +8,18 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import net.blusalt.model.BatterytState;
+import net.blusalt.model.DroneModel;
+import net.blusalt.model.DroneState;
 @Data
-@Entity
 @Builder
-public class Medication {
+@AllArgsConstructor
+@NoArgsConstructor
+public class MedicationResponse {
 
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)

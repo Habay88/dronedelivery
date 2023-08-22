@@ -1,4 +1,4 @@
-package net.blusalt.model;
+package net.blusalt.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,12 +6,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
-import lombok.Builder;
 import lombok.Data;
 @Data
-@Entity
-@Builder
-public class Medication {
+public class MedicationRequest {
 
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
