@@ -42,13 +42,13 @@ public class DroneFleetController {
 	}
 
 
-
+// register a drone
 	@PostMapping
 	public ResponseEntity<Long> addDrone(@Valid @RequestBody DroneRequest droneRequest ){
 		long droneId = droneFleetService.addFleet(droneRequest);
 		return new ResponseEntity<>(droneId, HttpStatus.CREATED);
 	}
-	
+	//loading a drone with medication items
 	 @PostMapping("/{droneId}/load-medication/{medicationId}")
 	    public ResponseEntity<String> loadMedication(@PathVariable Long droneId, @PathVariable Long medicationId) {
 	        DroneFleet droneRequest = droneRepository.findById(droneId).orElseThrow(
@@ -56,15 +56,13 @@ public class DroneFleetController {
 	        Medication medication = medicationRepository.findById(medicationId).orElseThrow(
 					()-> new MedicationCustomException("medication with given id not found","Medication Not Found"));
 
-//	        if (droneRequest == null || medication == null) {
-//	            return ResponseEntity.badRequest().body("Drone or medication not found.");
-//	        }
 
 	        droneRequest.getLoadedMedications().add(medication);
 	        droneRepository.save(droneRequest);
 
 	        return ResponseEntity.ok("Medication loaded to the drone was successful.");
 	    }
+	 // check loaded medication items for a given drone
 	 @GetMapping("/{droneId}/loaded-medications")
 	    public ResponseEntity<List<Medication>> getLoadedMedications(@PathVariable Long droneId) {
 	        DroneFleet droneResponse = droneRepository.findById(droneId).orElse(null);
@@ -76,12 +74,13 @@ public class DroneFleetController {
 	        List<Medication> loadedMedications = droneResponse.getLoadedMedications();
 	        return ResponseEntity.ok(loadedMedications);
 	    }
-	
+	// check drone using their id
 	 @GetMapping("/{id}")
 	public ResponseEntity<DroneResponse> getDroneById(@PathVariable("id") long droneId){
 		DroneResponse droneResponse = droneFleetService.getDroneById(droneId);
 		return new ResponseEntity<>(droneResponse,HttpStatus.OK);
 	}
+	 // check available drones for loading
 	  @GetMapping("/available-drone")
 	    public ResponseEntity<List<DroneFleet>> getDronesAvailableForLoading() {
 	        List<DroneFleet> availableDrones = droneRepository.findAll().stream()
@@ -90,4 +89,6 @@ public class DroneFleetController {
 
 	        return ResponseEntity.ok(availableDrones);
 	    }
+	  // check drone battery level for a given drone
+	  
 }
