@@ -23,6 +23,8 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class DroneFleet {
 
 	@Id
@@ -42,7 +44,7 @@ public class DroneFleet {
 	private BatterytState batteryState;
 	
 	private DroneState droneState;
-	
+	@Builder.Default
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Medication> loadedMedications = new ArrayList<>();
 }

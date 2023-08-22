@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 import net.blusalt.entity.DroneRequest;
 import net.blusalt.entity.DroneResponse;
+import net.blusalt.exception.DroneServiceCustomException;
+import net.blusalt.exception.MedicationCustomException;
 import net.blusalt.model.DroneFleet;
 import net.blusalt.model.DroneState;
 import net.blusalt.model.Medication;
@@ -49,17 +51,19 @@ public class DroneFleetController {
 	
 	 @PostMapping("/{droneId}/load-medication/{medicationId}")
 	    public ResponseEntity<String> loadMedication(@PathVariable Long droneId, @PathVariable Long medicationId) {
-	        DroneFleet droneRequest = droneRepository.findById(droneId).orElse(null);
-	        Medication medication = medicationRepository.findById(medicationId).orElse(null);
+	        DroneFleet droneRequest = droneRepository.findById(droneId).orElseThrow(
+					()-> new DroneServiceCustomException("drone with given id not found","Drone Not Found"));
+	        Medication medication = medicationRepository.findById(medicationId).orElseThrow(
+					()-> new MedicationCustomException("medication with given id not found","Medication Not Found"));
 
-	        if (droneRequest == null || medication == null) {
-	            return ResponseEntity.badRequest().body("Drone or medication not found.");
-	        }
+//	        if (droneRequest == null || medication == null) {
+//	            return ResponseEntity.badRequest().body("Drone or medication not found.");
+//	        }
 
 	        droneRequest.getLoadedMedications().add(medication);
 	        droneRepository.save(droneRequest);
 
-	        return ResponseEntity.ok("Medication loaded successfully.");
+	        return ResponseEntity.ok("Medication loaded to the drone was successful.");
 	    }
 	 @GetMapping("/{droneId}/loaded-medications")
 	    public ResponseEntity<List<Medication>> getLoadedMedications(@PathVariable Long droneId) {
