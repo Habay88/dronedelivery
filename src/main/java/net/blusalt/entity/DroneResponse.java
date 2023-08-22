@@ -18,7 +18,7 @@ import net.blusalt.model.DroneState;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DroneResponse {
-	private UUID serialNumber;
+	private String serialNumber;
 	private DroneModel model;
 	private int weightLimit;
 	private int batteryCapacityPercentage;

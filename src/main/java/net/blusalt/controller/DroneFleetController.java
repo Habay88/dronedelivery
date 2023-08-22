@@ -82,7 +82,7 @@ public class DroneFleetController {
 		DroneResponse droneResponse = droneFleetService.getDroneById(droneId);
 		return new ResponseEntity<>(droneResponse,HttpStatus.OK);
 	}
-	  @GetMapping("/available-for-loading")
+	  @GetMapping("/available-drone")
 	    public ResponseEntity<List<DroneFleet>> getDronesAvailableForLoading() {
 	        List<DroneFleet> availableDrones = droneRepository.findAll().stream()
 	                .filter(drone -> drone.getDroneState() == DroneState.IDLE)
