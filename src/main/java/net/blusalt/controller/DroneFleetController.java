@@ -34,11 +34,13 @@ public class DroneFleetController {
 	MedicationRepository medicationRepository;
 	@Autowired
 	DroneRepository droneRepository;
+	
 	public DroneFleetController(DroneFleetService droneFleetService, MedicationRepository medicationRepository,DroneRepository droneRepository) {
 		
 		this.droneFleetService = droneFleetService;
 		this.medicationRepository = medicationRepository;
 		this.droneRepository =  droneRepository;
+	
 	}
 
 
@@ -90,5 +92,14 @@ public class DroneFleetController {
 	        return ResponseEntity.ok(availableDrones);
 	    }
 	  // check drone battery level for a given drone
-	  
+	  @GetMapping("/{droneId}/batteryLevel")
+	  public ResponseEntity<Double> checkBatteryLevel(@PathVariable Long droneId){
+		  DroneFleet dronefleet = droneRepository.findById(droneId).orElseThrow(
+					()-> new DroneServiceCustomException("drone with given id not found","Drone Not Found"));
+	 
+		  double batteryLevel = dronefleet.getBatteryCapacityPercentage();
+		  return ResponseEntity.ok(batteryLevel);
+		  }
 }
+
+	  

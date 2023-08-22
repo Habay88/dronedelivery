@@ -47,4 +47,5 @@ public class DroneFleet {
 	@Builder.Default
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Medication> loadedMedications = new ArrayList<>();
+	
 }
