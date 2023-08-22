@@ -38,6 +38,7 @@ public class DroneserviceImpl implements DroneFleetService {
 				  .weightLimit(droneRequest.getWeightLimit())
 				  .batteryCapacityPercentage(droneRequest.getBatteryCapacityPercentage())
 				  .batteryState(droneRequest.getBatteryState())
+				  .droneState(droneRequest.getDroneState())
 				  .build();
 		  droneRepository.save(droneFleet);
 		  log.info("drone added");

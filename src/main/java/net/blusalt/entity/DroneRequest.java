@@ -7,11 +7,11 @@ import net.blusalt.model.BatterytState;
 import net.blusalt.model.DroneModel;
 import net.blusalt.model.DroneState;
 
-@Data
 
+@Data
 public class DroneRequest {
 
-	private UUID serialNumber;
+	private String serialNumber;
 	private DroneModel model;
 	private int weightLimit;
 	private int batteryCapacityPercentage;
