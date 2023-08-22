@@ -39,7 +39,7 @@ public class DroneFleet {
 	private double weightLimit;
 	@Min(0)
 	@Max(100)
-	private int batteryCapacityPercentage;
+	private double batteryCapacityPercentage;
 	
 	private BatterytState batteryState;
 	

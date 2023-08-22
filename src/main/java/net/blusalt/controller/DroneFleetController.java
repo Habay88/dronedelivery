@@ -71,8 +71,8 @@ public class DroneFleetController {
 					()-> new DroneServiceCustomException("Drone with given id not found","Drone Not Found"));
 	        Medication medication = medicationRepository.findById(medicationId).orElseThrow(
 					()-> new MedicationCustomException("Medication with given id not found","Medication Not Found"));
-           if(!droneRequest.canCarryExcessWeight((medication.getWeight(){
-        	   return ResponseEntity.badRequest().body("Drone weight limit  exceeded, please adjust accordingly.");
+           if(!droneRequest.canCarryExcessWeight(medication.getWeight())){
+        	   return ResponseEntity.badRequest().body("Drone weight limit  exceeded, please adjust accordingly to the weight of 500 GRAMS MAXIMUM.");
            }
 
 	        droneRequest.getLoadedMedications().add(medication);
