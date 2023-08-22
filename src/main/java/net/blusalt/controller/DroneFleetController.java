@@ -116,7 +116,7 @@ public class DroneFleetController {
 		  double batteryLevel = dronefleet.getBatteryCapacityPercentage();
 		  return ResponseEntity.ok(batteryLevel);
 		  }
-	  
+	  //Prevent the drone from being in LOADING state if the battery level is **below 25%**;
 	  @PostMapping("/{droneId}/set-loading")
 	  public ResponseEntity<String> checkDroneState(@PathVariable Long droneId){
 		  DroneFleet droneFleet = droneRepository.findById(droneId).orElseThrow(
