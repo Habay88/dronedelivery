@@ -37,7 +37,7 @@ sample data using postman or insomnia
 
 > MEDICATIONS:
 POST : /medication   CREATES A NEW MEDICATION
-             (droneid)         (medicationid)
+                      
 {
     "name":"vit-a",
     "weight": "600",
@@ -46,22 +46,22 @@ POST : /medication   CREATES A NEW MEDICATION
 }
 
 
-POST : /drone/1/load-medication/1    : LOAD MEDICATION ON A GIVEN DRONE BASE ON   ITS CARRYING CAPACITY THE DRONE ID AND MEDICATION ID  
+POST : /drone/{droneid}/load-medication/{medicationid}    : LOAD MEDICATION ON A GIVEN DRONE BASE ON   ITS CARRYING CAPACITY THE DRONE ID AND MEDICATION ID  
 
 
-GET : /drone/1                    :  GET THE DRONE INFO BASED ON THE ID
+GET : /drone/{droneid}                    :  GET THE DRONE INFO BASED ON THE ID
 
 GET : /available-drone     :  GET AVAILABLE DRONE BASED ON THE IDLE STATE
-GET : /1/batteryLevel       GET INFO ABOUT THE BATTERY LEVEL
-POST : /drone/1/set-loading      Prevent the drone from being in LOADING state if the battery level is **below 25%**;
+GET : /{droneid}/batteryLevel       GET INFO ABOUT THE BATTERY LEVEL
+POST : /drone/{droneid}/set-loading      Prevent the drone from being in LOADING state if the battery level is **below 25%**;
 
-N.B: the Id represented in the Pathvariables indicates the droneid and medicationid respectively based on the name before the number 
+ 
 
 Usage
 >The provided API endpoints are  to manage drones and medications.
 > Load medications onto drones, monitor battery levels, and track their states.
-> Proper input validation where created for the drones and medications.
-> Error were handled with custom exceptions
+> Proper input validation where created for the drones and medications via postman.
+> Errors were properly  handled with custom exceptions
 > periodic task to check drones battery levels and create history log for this.
-> pre loaded data will automatically populate the db . pls check your db config to conform with the declared db properties 
+> pre loaded data will automatically populate the db . pls check your db config to conform with the declared db properties in the applications.yaml
 > mysql database was used as the database 
