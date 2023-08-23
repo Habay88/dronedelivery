@@ -51,6 +51,7 @@ public class DroneFleet {
 	@OneToMany(mappedBy="dronefleet")
  private List<BatteryStatusHistory> batteryStatusHistories = new ArrayList<>();
 
+ 
 
 	// to check for excess weight
 	public boolean canCarryExcessWeight(double extraWeight) {
