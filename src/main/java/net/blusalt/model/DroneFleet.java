@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -32,6 +33,7 @@ public class DroneFleet {
     private long droneId;
 	
 	@Size(max = 100)
+	@Column(unique = true)
 	private String serialNumber;
 	
 	private DroneModel model;

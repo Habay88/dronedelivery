@@ -6,4 +6,6 @@ import net.blusalt.model.Medication;
 
 public interface MedicationRepository extends JpaRepository<Medication,Long>{
 
+   // boolean existsByCode(int code);
+
 }

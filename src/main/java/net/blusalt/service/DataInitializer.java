@@ -1,3 +1,4 @@
+package net.blusalt.service;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +22,7 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+      //  if (!droneRepository.existsBySerialNumber("your_serial_number") ||){
         DroneFleet drone = new DroneFleet();
         drone.setSerialNumber("qwertyuiop12345");
         drone.setModel(DroneModel.CRUISERWEIGHT);
@@ -86,3 +88,4 @@ public class DataInitializer implements CommandLineRunner {
         medicationRepository.save(medication3);
     }
 }
+//}

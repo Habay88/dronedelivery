@@ -7,4 +7,6 @@ import net.blusalt.model.DroneFleet;
 @Repository
 public interface DroneRepository extends JpaRepository<DroneFleet, Long> {
 
+   // boolean existsBySerialNumber(String string);
+
 }
