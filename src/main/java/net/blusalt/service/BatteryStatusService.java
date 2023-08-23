@@ -32,7 +32,7 @@ public class BatteryStatusService {
         batteryHistoryRepository.save(batteryStatusHistory);
     }
 
-	@Scheduled(fixedRate = 5 * 60 * 1000) //every  5 minutes interval
+	@Scheduled(fixedRate = 30 * 60 * 1000) //every  30 minutes interval
     public void checkBatteryLevels() {
         List<DroneFleet> drones = droneRepository.findAll();
 
