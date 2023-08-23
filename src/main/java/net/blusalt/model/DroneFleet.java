@@ -48,6 +48,10 @@ public class DroneFleet {
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Medication> loadedMedications = new ArrayList<>();
 	
+	@OneToMany(mappedBy="dronefleet")
+ private List<BatteryStatusHistory> batteryStatusHistories = new ArrayList<>();
+
+
 	// to check for excess weight
 	public boolean canCarryExcessWeight(double extraWeight) {
 		double currentWeight = loadedMedications.stream()
