@@ -63,3 +63,4 @@ Usage
 > Error were handled with custom exceptions
 > periodic task to check drones battery levels and create history
 log for this.
+> mysql database was used as the database 
