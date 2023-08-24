@@ -55,8 +55,24 @@ GET : /available-drone     :  GET AVAILABLE DRONE BASED ON THE IDLE STATE
 GET : /{droneid}/batteryLevel       GET INFO ABOUT THE BATTERY LEVEL
 POST : /drone/{droneid}/set-loading      Prevent the drone from being in LOADING state if the battery level is **below 25%**;
 
- 
+ > COMMIT HISTORY on your git bash
+ > git log --oneline --author="biodun.banjoko@yahoo.com" --since "2023-21-08"
 
+PS C:\Users\lbanjoko\Documents\GitHub\dronedelivery> git log --oneline --author="biodun.banjoko@yahoo.com" --since "2023-21-08"
+Re
+cabb228 (HEAD -> main) readme update
+140e9b8 commit history log yet to attached
+9fe2e06 checking for multiple entry 4 datainitializer
+4438fc2 preloaded data completed
+aeb28ec preloaded date for drone using data initalizer
+68ede14 datpreloader cmdlinerunner
+fbce80c commandline runner wip
+8c33e18 readme file documentation wip
+49fa5bb scheduled 30 minutes working fine
+6f59d19 scheduling batteryhistorlog
+cc7396c periodic task 4 drones battery levels nt working
+7af6b79 wip
+:
 Usage
 >The provided API endpoints are  to manage drones and medications.
 > Load medications onto drones, monitor battery levels, and track their states.
@@ -64,4 +80,4 @@ Usage
 > Errors were properly  handled with custom exceptions
 > periodic task to check drones battery levels and create history log for this.
 > pre loaded data will automatically populate the db . pls check your db config to conform with the declared db properties in the applications.yaml
-> mysql database was used as the database 
+> mysql database was used as the database for this task
